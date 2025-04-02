@@ -3,17 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI App with OpenAI API</title>
+    <title>詐騙模擬器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .user-box, .scammer-box {
+            width: 50%;
+            padding: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+        .chat-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 200px;
+            overflow-y: auto;
+            background: #fafafa;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background: #d1ecf1;
+            text-align: left;
+        }
+        .scammer-message {
+            background: #f8d7da;
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
-    <form action="/generate" method="post">
-        <textarea name="prompt" placeholder="Enter your prompt"></textarea>
-        <button type="submit">Generate</button>
-    </form>
-    {% if response %}
-    <div>
-        <p>{{ response }}</p>
+    <div class="container">
+        <div class="user-box">
+            <h3>你的對話</h3>
+
+            <textarea name="prompt" placeholder="輸入你的訊息..."></textarea>
+	    <p style="text-align: center;"><button type="submit">發送</button></p>
+
+        </div>
+        <div class="scammer-box">
+            <h3>詐騙 AI</h3>
+            <div class="chat-box" id="scammer-chat">    
+    		<p>{% if response %}</p>
+    		<div>
+      		<p>{{ response }}</p>
+    		</div>
+   		<p>{% endif %}</p></div>
+        </div>
     </div>
-    {% endif %}
+
 </body>
 </html>
