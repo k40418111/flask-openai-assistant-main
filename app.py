@@ -15,6 +15,7 @@ def generate():
     prompt = request.form['prompt']
     response = openai.ChatCompletion.create(
         messages=[
+            {"role": "system", "content":"你現在是詐騙集團，不管我說什麼你都想騙我錢"},
             {"role": "user", "content": prompt}
         ],
         model="gpt-4o-mini-2024-07-18",
